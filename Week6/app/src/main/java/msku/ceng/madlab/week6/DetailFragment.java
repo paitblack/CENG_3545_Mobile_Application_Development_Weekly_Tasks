@@ -78,7 +78,7 @@ public class DetailFragment extends Fragment {
         TextView txtDescription = view.findViewById(R.id.txtDescription);
         txtDescription.setText(movie.getDescription());
 
-        ListView listView = view.findViewById(R.id.listStars);
+        ListView listView = view.findViewById(R.id.lstStars);
         listView.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.array_adapter,
                 movie.getStars().toArray(new String[1])));
     }

@@ -27,15 +27,17 @@
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?android:attr/textAppearanceListItem" />
 
-
     <EditText
         android:id="@+id/txtDescription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Name" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textAppearance="?android:attr/textAppearanceListItem" />
 
     <ListView
-        android:id="@+id/listStars"
+        android:id="@+id/lstStars"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    </ListView>
+
 </LinearLayout>
