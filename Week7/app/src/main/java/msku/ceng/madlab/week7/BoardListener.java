@@ -1,5 +1,7 @@
 package msku.ceng.madlab.week7;
 
+import android.widget.Toast;
+
 public interface BoardListener {
     byte PLAYER_1 = 1;
     byte PLAYER_2 = 2;
@@ -11,4 +13,5 @@ public interface BoardListener {
     void gameEnded(byte winner);
 
     void invalidPlay(byte row, byte col);
+
 }
