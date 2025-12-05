@@ -1,22 +1,12 @@
 package msku.ceng.madlab.week10;
 
-import android.provider.ContactsContract;
-
-import java.io.Serializable;
 import java.util.Date;
 
-public class Note implements Serializable {
+public class Note {
+
     private String header;
     private Date date;
     private String filePath;
-
-    public String getHeader() {
-        return header;
-    }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
 
     public Date getDate() {
         return date;
@@ -32,5 +22,13 @@ public class Note implements Serializable {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
     }
 }
