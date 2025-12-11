@@ -8,30 +8,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import msku.ceng.madlab.week10.placeholder.PlaceholderContent.PlaceholderItem;
-import msku.ceng.madlab.week10.databinding.FragmentItemBinding;
+import msku.ceng.madlab.week10.databinding.FragmentNoteBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Note> notes;
-    NoteFragment.OnNoteListInteractionListener listener;
+    private ArrayList<Note> notes;
+    private fragment_note.OnNoteListInteractionListener listener;
 
-    public MyNoteRecyclerViewAdapter(List<Note> anotes, NoteFragment.OnNoteListInteractionListener listener) {
-        notes = anotes;
-        this.listener= listener;
+    public MyNoteRecyclerViewAdapter(List<Note> notes, fragment_note.OnNoteListInteractionListener listener){
+        this.listener = listener;
+        this.notes = new ArrayList<>(notes);
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_note, parent, false);
         return new ViewHolder(view);
     }
 
@@ -44,17 +42,19 @@ public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecycl
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != listener) {
-                    listener.onNoteSelected(holder.mItem);
+                if(null != listener){
+                    listener.onNotesSelected(holder.mItem);
                 }
+
             }
         });
-        if(position %2 == 1) {
-            holder.itemView.setBackgroundColor(Color.YELLOW);
-        }
-        else{
+        if(position % 2 == 1){
             holder.itemView.setBackgroundColor(Color.WHITE);
         }
+        else{
+            holder.itemView.setBackgroundColor(Color.YELLOW);
+        }
+
     }
 
     @Override
@@ -65,14 +65,15 @@ public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mHeaderView;
         public final TextView mDateView;
-        public  final View mView;
+        public final View mView;
         public Note mItem;
 
-        public ViewHolder(View view) {
+        public ViewHolder( View view) {
             super(view);
             mView = view;
             mHeaderView = view.findViewById(R.id.note_header);
-            mDateView = view.findViewById(R.id.note_date);        }
+            mDateView = view.findViewById(R.id.note_date);
+        }
 
         @Override
         public String toString() {
